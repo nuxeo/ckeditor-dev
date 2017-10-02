@@ -103,6 +103,7 @@
 			 * @param {CKEDITOR.dom.element} element The element to which the panel is attached.
 			 */
 			CKEDITOR.ui.inlineToolbarView.prototype.create = function( element ) {
+				this.build();
 				this.attach( element );
 
 				var that = this,
@@ -133,21 +134,8 @@
 			 * @param {Object} definition The menu item definition.
 			 * @member CKEDITOR.editor
 			 */
-			CKEDITOR.ui.inlineToolbar.prototype.addMenuItem = function( name, definition ) {
+			CKEDITOR.ui.inlineToolbarView.prototype.addMenuItem = function( name, definition ) {
 				this.menuItems[ name ] = new CKEDITOR.ui.button( definition );
-			};
-
-			/**
-			 * Adds an item from the specified definition to the editor context menu.
-			 *
-			 * @method
-			 * @param {String} name The menu item name.
-			 * @param {Object} definition The menu item definition.
-			 * @member CKEDITOR.editor
-			 */
-			CKEDITOR.ui.inlineToolbar.prototype.addMenuItem = function( name, definition ) {
-				this.menuItems[ name ] = new CKEDITOR.menuItem( this.editor, name, definition );
-				//this.menuItems[ name ] = new CKEDITOR.ui.menuButton( definition );
 			};
 
 			/**
@@ -157,7 +145,7 @@
 			 * @param {Object} definitions Object where keys are used as itemName and corresponding values as definition for a {@link #addMenuItem} call.
 			 * @member CKEDITOR.editor
 			 */
-			CKEDITOR.ui.inlineToolbar.prototype.addMenuItems = function( definitions ) {
+			CKEDITOR.ui.inlineToolbarView.prototype.addMenuItems = function( definitions ) {
 				for ( var itemName in definitions ) {
 					this.addMenuItem( itemName, definitions[ itemName ] );
 				}
@@ -171,7 +159,7 @@
 			 * @returns {Object}
 			 * @member CKEDITOR.editor
 			 */
-			CKEDITOR.ui.inlineToolbar.prototype.getMenuItem = function( name ) {
+			CKEDITOR.ui.inlineToolbarView.prototype.getMenuItem = function( name ) {
 				return this.menuItems[ name ];
 			};
 		}
