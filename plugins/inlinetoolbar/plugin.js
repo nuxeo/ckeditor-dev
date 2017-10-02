@@ -126,7 +126,7 @@
 				this.hide();
 			};
 
-				/**
+			/**
 			 * Adds an item from the specified definition to the editor context menu.
 			 *
 			 * @method
