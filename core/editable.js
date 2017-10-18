@@ -67,7 +67,7 @@
 				// apply focus on the main editable will compromise it's text selection.
 				if ( CKEDITOR.env.webkit && !this.hasFocus ) {
 					// Restore focus on element which we cached (on selectionCheck) as previously active.
-					active = this.editor._.previousActive || this.getDocument().getActive();
+					active = this.editor._.previousActive || (this.$.getRootNode && new CKEDITOR.dom.element( this.$.getRootNode().activeElement) ) || this.getDocument().getActive();
 					if ( this.contains( active ) ) {
 						active.focus();
 						return;

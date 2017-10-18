@@ -129,7 +129,7 @@ CKEDITOR.tools.extend( CKEDITOR.dom.document.prototype, {
 	getActive: function() {
 		var $active;
 		try {
-			$active = this.$.activeElement;
+			$active = (this.$.root.getRootNode && this.$.root.getRootNode().activeElement) || this.$.activeElement;
 		} catch ( e ) {
 			return null;
 		}

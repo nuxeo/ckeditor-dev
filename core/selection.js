@@ -1186,7 +1186,14 @@
 			if ( this._.cache.nativeSel !== undefined )
 				return this._.cache.nativeSel;
 
-			return ( this._.cache.nativeSel = isMSSelection ? this.document.$.selection : this.document.getWindow().$.getSelection() );
+			if (isMSSelection) {
+				this._.cache.nativeSel = this.document.$.selection
+			} else {
+				var root = (typeof this.root.$.getRootNode().getSelection === 'function') ? this.root.$.getRootNode(): this.document.getWindow().$;
+				this._.cache.nativeSel = root.getSelection();
+			}
+
+			return this._.cache.nativeSel;
 		},
 
 		/**
